@@ -23,5 +23,9 @@
   "bugs": {
     "url": "https://github.com/lawrenceosher/kambaz-node-server-app-cs4550-sp25/issues"
   },
-  "homepage": "https://github.com/lawrenceosher/kambaz-node-server-app-cs4550-sp25#readme"
+  "homepage": "https://github.com/lawrenceosher/kambaz-node-server-app-cs4550-sp25#readme",
+  "dependencies": {
+    "express": "^4.21.2",
+    "uuid": "^11.1.0"
+  }
 }
