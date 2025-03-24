@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/lawrenceosher/kambaz-node-server-app-cs4550-sp25#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.21.2",
     "uuid": "^11.1.0"
   }
