@@ -50,6 +50,7 @@ export default function UserRoutes(app) {
       res.sendStatus(401);
       return;
     }
+    res.json(currentUser);
   };
 
   const findCoursesForEnrolledUser = (req, res) => {
