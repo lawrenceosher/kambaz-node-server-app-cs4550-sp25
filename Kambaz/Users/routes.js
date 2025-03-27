@@ -109,4 +109,12 @@ export default function UserRoutes(app) {
   app.post("/api/users/signin", signin);
   app.post("/api/users/signout", signout);
   app.post("/api/users/profile", profile);
+
+  app.get("/api/check-session", (req, res) => {
+    if (req.session.user) {
+      res.json({ user: req.session.user });
+    } else {
+      res.status(401).json({ error: "Not authenticated" });
+    }
+  });
 }
