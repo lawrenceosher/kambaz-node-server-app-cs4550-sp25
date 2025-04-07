@@ -1,10 +1,10 @@
 import * as assignmentsDao from "./dao.js";
 
 export default function AssignmentsRoutes(app) {
-  app.put("/api/assignments/:assignmentId", (req, res) => {
+  app.put("/api/assignments/:assignmentId", async (req, res) => {
     const { assignmentId } = req.params;
     const assignmentUpdates = req.body;
-    const status = assignmentsDao.updateAssignment(
+    const status = await assignmentsDao.updateAssignment(
       assignmentId,
       assignmentUpdates
     );
@@ -13,7 +13,7 @@ export default function AssignmentsRoutes(app) {
 
   app.delete("/api/assignments/:assignmentId", async (req, res) => {
     const { assignmentId } = req.params;
-    const status = assignmentsDao.deleteAssignment(assignmentId);
+    const status = await assignmentsDao.deleteAssignment(assignmentId);
     res.send(status);
   });
 }
