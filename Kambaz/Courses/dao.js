@@ -1,19 +1,19 @@
 import model from "./model.js";
 import { v4 as uuidv4 } from "uuid";
 
-export function findAllCourses() {
-  return model.find();
+export async function findAllCourses() {
+  return await model.find();
 }
 
-export function createCourse(course) {
+export async function createCourse(course) {
   const newCourse = { ...course, _id: uuidv4() };
-  return model.create(newCourse);
+  return await model.create(newCourse);
 }
 
-export function deleteCourse(courseId) {
-  return model.deleteOne({ _id: courseId });
+export async function deleteCourse(courseId) {
+  return await model.deleteOne({ _id: courseId });
 }
 
-export function updateCourse(courseId, courseUpdates) {
-  return model.updateOne({ _id: courseId }, { $set: courseUpdates });
+export async function updateCourse(courseId, courseUpdates) {
+  return await model.updateOne({ _id: courseId }, { $set: courseUpdates });
 }

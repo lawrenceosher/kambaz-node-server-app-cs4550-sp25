@@ -1,19 +1,19 @@
 import { v4 as uuidv4 } from "uuid";
 import model from "./model.js";
 
-export function updateModule(moduleId, moduleUpdates) {
-  return model.updateOne({ _id: moduleId }, moduleUpdates);
+export async function updateModule(moduleId, moduleUpdates) {
+  return await model.updateOne({ _id: moduleId }, moduleUpdates);
 }
 
-export function deleteModule(moduleId) {
-  return model.deleteOne({ _id: moduleId });
+export async function deleteModule(moduleId) {
+  return await model.deleteOne({ _id: moduleId });
 }
 
-export function createModule(module) {
+export async function createModule(module) {
   const newModule = { ...module, _id: uuidv4() };
-  return model.create(newModule);
+  return await model.create(newModule);
 }
 
-export function findModulesForCourse(courseId) {
-  return model.find({ course: courseId });
+export async function findModulesForCourse(courseId) {
+  return await model.find({ course: courseId });
 }
