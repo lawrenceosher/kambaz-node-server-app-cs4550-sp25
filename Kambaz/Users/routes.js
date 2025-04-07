@@ -5,13 +5,27 @@ import * as enrollmentsDao from "../Enrollments/dao.js";
 export default function UserRoutes(app) {
   const createUser = (req, res) => {};
   const deleteUser = (req, res) => {};
-  
+
   const findAllUsers = async (req, res) => {
+    const { role, name } = req.query;
+    if (role) {
+      const users = await dao.findUsersByRole(role);
+      res.json(users);
+      return;
+    }
+    if (name) {
+      const users = await dao.findUsersByPartialName(name);
+      res.json(users);
+      return;
+    }
     const users = await dao.findAllUsers();
     res.json(users);
   };
 
-  const findUserById = (req, res) => {};
+  const findUserById = async (req, res) => {
+    const user = await dao.findUserById(req.params.userId);
+    res.json(user);
+  };
 
   const updateUser = async (req, res) => {
     const userId = req.params.userId;
@@ -101,7 +115,9 @@ export default function UserRoutes(app) {
 
   const getEnrollmentsForUser = async (req, res) => {
     const currentUser = req.session["currentUser"];
-    const enrollments = await enrollmentsDao.getEnrollmentsForUser(currentUser._id);
+    const enrollments = await enrollmentsDao.getEnrollmentsForUser(
+      currentUser._id
+    );
     res.json(enrollments);
   };
 
